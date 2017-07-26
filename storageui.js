@@ -1,4 +1,4 @@
-/*storageUI Version 1.0.2*/
+/*storageUI Version 1.0.3*/
 
 var storageUI = function(params)
 {
@@ -109,8 +109,8 @@ var storageUI = function(params)
 			var overlay_html = "<div style='" + style2 + "' id='storageui-overlay'></div>";
 			var msg_html = "<div style='" + style1 + "' id='storageui-msg'>" + txt + "</div>";
 
-			document.body.insertAdjacentHTML('afterend', overlay_html);
-			document.body.insertAdjacentHTML('afterend', msg_html);
+			document.body.insertAdjacentHTML('beforeend', overlay_html);
+			document.body.insertAdjacentHTML('beforeend', msg_html);
 
 			var msg = document.getElementById('storageui-msg');
 			var overlay = document.getElementById('storageui-overlay');
