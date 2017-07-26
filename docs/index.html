@@ -1,80 +1,230 @@
 <html>
-	<head>
-		<script src='storageui.min.js'></script>
+    <head>
+        <link rel='shortcut icon' href="favicon.ico?v=1" type='image/x-icon'>         
+        <script src='storageui.min.js'></script>
+        <script>
+            var stor = storageUI(
+            {
+                items:
+                [
+                    {
+                        name: "Options",
+                        ls_name: "options_v1",
+                        on_save: function(item)
+                        {
+                            stor.beep();
+                            localStorage.setItem(item.ls_name, item.value);
+                            alert(item.ls_name + ' was modified!');
+                        },
+                        on_reset: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
+                            alert(item.ls_name + ' was resetted!');
+                        },
+                        on_copied: function(item)
+                        {
+                            stor.beep();
+                            alert(item.name + ' was copied!');
+                        }
+                    },
 
-		<script>
-			var stor = storageUI(
-			{
-				items:
-				[
-					{
-						name: "Options",
-						ls_name: "options_v1",
-						on_save: function(item)
-						{
-							stor.beep();
-							alert(item.ls_name + ' was modified!');
-						},
-						on_reset: function(item)
-						{
-							alert(item.ls_name + ' was resetted!');
-						},
-						on_copied: function(item)
-						{
-							stor.beep();
-							alert(item.name + ' was copied!');
-						}
-					},
+                    {
+                        name: "Programs",
+                        ls_name: "programs_v1",
+                        on_save: function(item)
+                        {
+                            stor.beep();
+                            localStorage.setItem(item.ls_name, item.value);
+                            alert(item.ls_name + ' was modified!');
+                        },
+                        on_reset: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
+                            alert(item.name + ' was resetted!');
+                        },
+                        on_copied: function(item)
+                        {
+                            stor.beep();
+                            alert(item.name + ' was copied!');
+                        }
+                    },
 
-					{
-						name: "Programs",
-						ls_name: "programs_v1",
-						on_save: function(item)
-						{
-							stor.beep();
-							alert(item.ls_name + ' was modified!');
-						},
-						on_reset: function(item)
-						{
-							alert(item.name + ' was resetted!');
-						},
-						on_copied: function(item)
-						{
-							stor.beep();
-							alert(item.name + ' was copied!');
-						}
-					},
+                    {
+                        name: "Save Hisotry",
+                        ls_name: "saved_v1",
+                        on_save: function(item)
+                        {
+                            stor.beep();
+                            localStorage.setItem(item.ls_name, item.value);
+                            alert(item.ls_name + ' was modified!');
+                        },
+                        on_reset: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
+                            alert(item.name + ' was resetted!');
+                        },
+                        on_copied: function(item)
+                        {
+                            stor.beep();
+                            alert(item.name + ' was copied!');
+                        }
+                    }
+                ]
+            });
 
-					{
-						name: "Puppies",
-						ls_name: "puppies_v1",
-						on_save: function(item)
-						{
-							stor.beep();
-							alert(item.ls_name + ' was modified!');
-						},
-						on_reset: function(item)
-						{
-							console.log(1);
-							alert(item.name + ' was resetted!');
-						},
-						on_copied: function(item)
-						{
-							stor.beep();
-							alert(item.name + ' was copied!');
-						}
-					}
-				]
-			});
+            var s = '{"version":"options_v1","sound":true,"commas":true,"round":true,"round_places":10,"fraction":false,"mixed":false,"theme":"lake"}';
+            localStorage.setItem('options_v1', s);
 
-			function show()
-			{
-				stor.menu();
-			}
-		</script>
-	</head>
+            s = '{"version":"programs_v1","items":[{"name":"clean","primary":{"title":"clean","commands":"remove all lines","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"test1","primary":{"title":"test 1","commands":"insert 544; add line after; prev variable; insert +234; add line after; prev input; move caret to start; insert (; move caret to end; insert )/3; format all; play done","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F3","primary":{"title":"","commands":"insert this is F3","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F4","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F5","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F6","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F7","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F8","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"formt","primary":{"title":"format","commands":"format all","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F9","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"undo","primary":{"title":"undo","commands":"undo","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"redo","primary":{"title":"redo","commands":"redo","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}}]}';
+            localStorage.setItem('programs_v1', s);
 
-	<body>
-		<button onclick='show()'>Show storageUI</button>
-	</body>
+            s = '{"version":"saved_v1","items":[["Wednesday, July 26th, 2017, 6:00:00 AM","http://calculator.merkoba.com/X46ROs4j",1,"4/365/*8(4)\n",false],["Wednesday, July 26th, 2017, 5:59:54 AM","http://calculator.merkoba.com/BLWw17sn",1,"4/365/*84//567\n",false],["Wednesday, July 26th, 2017, 5:59:51 AM","http://calculator.merkoba.com/GYyAggLw",1,"4/365/*5435584//567\n",false],["Wednesday, July 26th, 2017, 5:59:48 AM","http://calculator.merkoba.com/rcca1PsB",1,"4/365/*54355\n",false],["Wednesday, July 26th, 2017, 5:59:46 AM","http://calculator.merkoba.com/Zik92u7h",1,"4/365/*5\n",false],["Wednesday, July 26th, 2017, 5:59:42 AM","http://calculator.merkoba.com/DToEJQnN",1,"4/3\n",false],["Monday, July 24th, 2017, 11:41:57 PM","http://calculator.merkoba.com/Pirwf5lL",1,"5\n",false]]}';
+            localStorage.setItem('saved_v1', s);
+
+
+        </script>
+
+        <style>
+            body
+            {
+                max-width: 80%;
+                font-family: verdana;
+                margin: 0 auto;
+                font-size: 20px;
+            }
+            h1
+            {
+                letter-spacing: 0.2em;
+            }
+            h2
+            {
+                letter-spacing: 0.2em;
+            }            
+            .clicky
+            {
+                color: #be5959;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <br><h1>storageUI</h1>
+        
+        A single 5kb javascript file that enables a simple viewer and editor for localStorage data.<br><br>
+        It makes it easy to give your site a quick way to copy local storage from one browser to another.<br><br>
+        It doesn't modify localStorage, that's up to you via triggered events.<br>
+        <br><br>
+        To install just include the file:<br>
+        <i><blockquote><pre><code>&lt;script src='storageui.min.js'&gt;</script></code></pre></blockquote></i>
+
+        <br><span class='clicky' onclick='stor.menu()'>Click here for a Demo</span>
+        <br><br><br>
+
+        Demo Code:
+
+        <i><blockquote><pre><code>var stor = storageUI(
+{
+    items:
+    [
+        {
+            name: "Options",
+            ls_name: "options_v1",
+            on_save: function(item)
+            {
+                // Do whatever you need to do
+                stor.beep();
+                alert(item.ls_name + ' was modified!');
+            },
+            on_reset: function(item)
+            {
+                // Do whatever you need to do
+                alert(item.ls_name + ' was resetted!');
+            },
+            on_copied: function(item)
+            {
+                // Do whatever you need to do
+                stor.beep();
+                alert(item.name + ' was copied!');
+            }
+        },
+
+        {
+            name: "Programs",
+            ls_name: "programs_v1",
+            on_save: function(item)
+            {
+                // Do whatever you need to do
+                stor.beep();
+                alert(item.ls_name + ' was modified!');
+            },
+            on_reset: function(item)
+            {
+                // Do whatever you need to do
+                alert(item.name + ' was resetted!');
+            },
+            on_copied: function(item)
+            {
+                // Do whatever you need to do
+                stor.beep();
+                alert(item.name + ' was copied!');
+            }
+        },
+
+        {
+            name: "Save History",
+            ls_name: "saved_v1",
+            on_save: function(item)
+            {
+                // Do whatever you need to do
+                stor.beep();
+                alert(item.ls_name + ' was modified!');
+            },
+            on_reset: function(item)
+            {
+                // Do whatever you need to do
+                alert(item.name + ' was resetted!');
+            },
+            on_copied: function(item)
+            {
+                // Do whatever you need to do
+                stor.beep();
+                alert(item.name + ' was copied!');
+            }
+        }
+    ],
+    view_in_menu: true,
+    reset_in_menu: true
+});
+
+stor.menu();
+        </code></pre></blockquote></i>
+
+        <h2>Item Options</h2>
+
+        To create an instance you pass it an object as you can see in the example above.<br>
+        Each object has a list of items. Each item has the following properies:<br><br>
+        <i>name (string)</i>: The displayed name of the localStorage object.<br><br>
+        <i>ls_name (string)</i>: The internal name of the localStorage object to be retreived.<br><br>
+        <i>on_save (function) [default: empty function]</i>: What to do when "Save Modification" was clicked. It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
+        <i>on_reset (function) [default: empty function]</i>: What to do when the object was selected to be resetted. It receives an item, with "name" and "ls_name".<br><br>
+        <i>on_copied (function) [default: empty function]</i>: This triggers after the a textarea's value was copied to the clipboard by clicking "Copy To Clipboard". It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
+        <i>show_in_view (boolean) [default: true]</i>: Controls whether the item is shown in the View Data window.<br><br>
+        <i>show_in_reset (boolean) [default: true]</i>: Controls whether the item is shown in the Reset Data window.<br><br>
+
+        <h2>General Options</h2>
+        <i>view_in_menu (boolean) [default: true]</i>: Controls whether "View Data" is shown in the menu window.<br><br>
+        <i>reset_in_menu (boolean) [default: true]</i>: Controls whether "Reset Data" is shown in the menu window.<br><br>
+
+        <br><h2>Methods</h2>
+        <i>instance.menu()</i>: Shows the menu to select either View Data or Reset Data.<br><br>
+        <i>instance.view()</i>: Shows the View Data window.<br><br>
+        <i>instance.reset()</i>: Shows the Reset Data window.<br><br>
+        <i>instance.close()</i>: Close everything.<br><br>
+        <i>instance.beep()</i>: Play a little beep sound :)<br><br>
+
+
+        <br><br><br><br>
+        <br><br><br><br>
+    </body>
 </html>

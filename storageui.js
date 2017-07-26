@@ -1,4 +1,4 @@
-/*storageUI Version 1.0.0*/
+/*storageUI Version 1.0.1*/
 
 var storageUI = function(params)
 {
@@ -244,6 +244,7 @@ var storageUI = function(params)
 
 		function copy_func(item, area)
 		{
+			instance.copy(area.value);
 			item.on_copied({name:item.name, ls_name:item.ls_name, value:area.value});
 		}
 
