@@ -1,5 +1,6 @@
 <html>
     <head>
+        <title>storageUI</title>
         <link rel='shortcut icon' href="favicon.ico?v=1" type='image/x-icon'>         
         <script src='storageui.min.js'></script>
         <script>
@@ -137,18 +138,17 @@
             ls_name: "options_v1",
             on_save: function(item)
             {
-                // Do whatever you need to do
                 stor.beep();
+                localStorage.setItem(item.ls_name, item.value);
                 alert(item.ls_name + ' was modified!');
             },
             on_reset: function(item)
             {
-                // Do whatever you need to do
+                localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
                 alert(item.ls_name + ' was resetted!');
             },
             on_copied: function(item)
             {
-                // Do whatever you need to do
                 stor.beep();
                 alert(item.name + ' was copied!');
             }
@@ -159,47 +159,43 @@
             ls_name: "programs_v1",
             on_save: function(item)
             {
-                // Do whatever you need to do
                 stor.beep();
+                localStorage.setItem(item.ls_name, item.value);
                 alert(item.ls_name + ' was modified!');
             },
             on_reset: function(item)
             {
-                // Do whatever you need to do
+                localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
                 alert(item.name + ' was resetted!');
             },
             on_copied: function(item)
             {
-                // Do whatever you need to do
                 stor.beep();
                 alert(item.name + ' was copied!');
             }
         },
 
         {
-            name: "Save History",
+            name: "Save Hisotry",
             ls_name: "saved_v1",
             on_save: function(item)
             {
-                // Do whatever you need to do
                 stor.beep();
+                localStorage.setItem(item.ls_name, item.value);
                 alert(item.ls_name + ' was modified!');
             },
             on_reset: function(item)
             {
-                // Do whatever you need to do
+                localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
                 alert(item.name + ' was resetted!');
             },
             on_copied: function(item)
             {
-                // Do whatever you need to do
                 stor.beep();
                 alert(item.name + ' was copied!');
             }
         }
-    ],
-    view_in_menu: true,
-    reset_in_menu: true
+    ]
 });
 
 stor.menu();
