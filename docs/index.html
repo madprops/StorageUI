@@ -66,6 +66,68 @@
                     }
                 ]
             });
+            var stor2 = storageUI(
+            {
+                items:
+                [
+                    {
+                        name: "Optioins",
+                        ls_name: "options_v1",
+                        on_save: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, item.value);
+                            alert(item.ls_name + ' was modified!');
+                        },
+                        on_reset: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
+                            alert(item.ls_name + ' was resetted!');
+                        },
+                        on_copied: function(item)
+                        {
+                            alert(item.name + ' was copied!');
+                        }
+                    },
+
+                    {
+                        name: "Programs",
+                        ls_name: "programs_v1",
+                        on_save: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, item.value);
+                            alert(item.ls_name + ' was modified!');
+                        },
+                        on_reset: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
+                            alert(item.name + ' was resetted!');
+                        },
+                        on_copied: function(item)
+                        {
+                            alert(item.name + ' was copied!');
+                        }
+                    },
+
+                    {
+                        name: "Save Hisotry",
+                        ls_name: "saved_v1",
+                        on_save: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, item.value);
+                            alert(item.ls_name + ' was modified!');
+                        },
+                        on_reset: function(item)
+                        {
+                            localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
+                            alert(item.name + ' was resetted!');
+                        },
+                        on_copied: function(item)
+                        {
+                            alert(item.name + ' was copied!');
+                        }
+                    }
+                ]
+            });
 
             var s = '{"version":"options_v1","sound":true,"commas":true,"round":true,"round_places":10,"fraction":false,"mixed":false,"theme":"lake"}';
             localStorage.setItem('options_v1', s);
@@ -116,7 +178,7 @@
         It doesn't modify localStorage, that's up to you via triggered events.<br>
         <br><br>
         To install just include the file:<br>
-        <i><blockquote><pre><code>&lt;script src='storageui.min.js'&gt;</script></code></pre></blockquote></i>
+        <i><blockquote><pre><code>&gt;script src='storageui.min.js'&gt;&lt;/script&gt;</code></pre></blockquote></i>
 
         <br><span class='clicky' onclick='stor.menu()'>Click here for a Demo</span>
         <br><br><br>
