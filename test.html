@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<script src='storageui.min.js'></script>
+
+		<script>
+			var stor = storageUI(
+			{
+				items:
+				[
+					{
+						name: "Options",
+						ls_name: "options_v1",
+						on_save: function(item)
+						{
+							stor.beep();
+							alert(item.ls_name + ' was modified!');
+						},
+						on_reset: function(item)
+						{
+							alert(item.ls_name + ' was resetted!');
+						},
+						on_copied: function(item)
+						{
+							stor.beep();
+							alert(item.name + ' was copied!');
+						}
+					},
+
+					{
+						name: "Programs",
+						ls_name: "programs_v1",
+						on_save: function(item)
+						{
+							stor.beep();
+							alert(item.ls_name + ' was modified!');
+						},
+						on_reset: function(item)
+						{
+							alert(item.name + ' was resetted!');
+						},
+						on_copied: function(item)
+						{
+							stor.beep();
+							alert(item.name + ' was copied!');
+						}
+					},
+
+					{
+						name: "Puppies",
+						ls_name: "puppies_v1",
+						on_save: function(item)
+						{
+							stor.beep();
+							alert(item.ls_name + ' was modified!');
+						},
+						on_reset: function(item)
+						{
+							console.log(1);
+							alert(item.name + ' was resetted!');
+						},
+						on_copied: function(item)
+						{
+							stor.beep();
+							alert(item.name + ' was copied!');
+						}
+					}
+				]
+			});
+
+			function show()
+			{
+				stor.menu();
+			}
+		</script>
+	</head>
+
+	<body>
+		<button onclick='show()'>Show storageUI</button>
+	</body>
+</html>
