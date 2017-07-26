@@ -13,7 +13,6 @@
                         ls_name: "options_v1",
                         on_save: function(item)
                         {
-                            stor.beep();
                             localStorage.setItem(item.ls_name, item.value);
                             alert(item.ls_name + ' was modified!');
                         },
@@ -24,7 +23,6 @@
                         },
                         on_copied: function(item)
                         {
-                            stor.beep();
                             alert(item.name + ' was copied!');
                         }
                     },
@@ -34,7 +32,6 @@
                         ls_name: "programs_v1",
                         on_save: function(item)
                         {
-                            stor.beep();
                             localStorage.setItem(item.ls_name, item.value);
                             alert(item.ls_name + ' was modified!');
                         },
@@ -45,7 +42,6 @@
                         },
                         on_copied: function(item)
                         {
-                            stor.beep();
                             alert(item.name + ' was copied!');
                         }
                     },
@@ -55,7 +51,6 @@
                         ls_name: "saved_v1",
                         on_save: function(item)
                         {
-                            stor.beep();
                             localStorage.setItem(item.ls_name, item.value);
                             alert(item.ls_name + ' was modified!');
                         },
@@ -66,7 +61,6 @@
                         },
                         on_copied: function(item)
                         {
-                            stor.beep();
                             alert(item.name + ' was copied!');
                         }
                     }
@@ -130,6 +124,7 @@
         Demo Code:
 
         <i><blockquote><pre><code>var stor = storageUI(
+var stor = storageUI(
 {
     items:
     [
@@ -138,7 +133,6 @@
             ls_name: "options_v1",
             on_save: function(item)
             {
-                stor.beep();
                 localStorage.setItem(item.ls_name, item.value);
                 alert(item.ls_name + ' was modified!');
             },
@@ -149,7 +143,6 @@
             },
             on_copied: function(item)
             {
-                stor.beep();
                 alert(item.name + ' was copied!');
             }
         },
@@ -159,7 +152,6 @@
             ls_name: "programs_v1",
             on_save: function(item)
             {
-                stor.beep();
                 localStorage.setItem(item.ls_name, item.value);
                 alert(item.ls_name + ' was modified!');
             },
@@ -170,7 +162,6 @@
             },
             on_copied: function(item)
             {
-                stor.beep();
                 alert(item.name + ' was copied!');
             }
         },
@@ -180,7 +171,6 @@
             ls_name: "saved_v1",
             on_save: function(item)
             {
-                stor.beep();
                 localStorage.setItem(item.ls_name, item.value);
                 alert(item.ls_name + ' was modified!');
             },
@@ -191,7 +181,6 @@
             },
             on_copied: function(item)
             {
-                stor.beep();
                 alert(item.name + ' was copied!');
             }
         }
@@ -221,11 +210,9 @@ stor.menu();
         <i>instance.menu()</i>: Shows the menu to select either View Data or Reset Data.<br><br>
         <i>instance.view()</i>: Shows the View Data window.<br><br>
         <i>instance.reset()</i>: Shows the Reset Data window.<br><br>
-        <i>instance.close()</i>: Close everything.<br><br>
-        <i>instance.beep()</i>: Play a little beep sound :)<br><br>
+        <i>instance.close()</i>: Closes everything.<br><br>
 
         <br><br><a href='https://github.com/madprops/storageUI'>Get the code at Github</a>
-
 
         <br><br><br><br>
         <br><br><br><br>

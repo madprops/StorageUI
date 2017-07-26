@@ -1,4 +1,4 @@
-/*storageUI Version 1.0.1*/
+/*storageUI Version 1.0.2*/
 
 var storageUI = function(params)
 {
@@ -306,22 +306,6 @@ var storageUI = function(params)
 		textareaEl.select();
 		document.execCommand('copy');
 		document.body.removeChild(textareaEl);		
-	}
-
-	instance.beep = function()
-	{
-		if(instance.audio_context === undefined)
-		{
-			instance.audio_context = new AudioContext();
-		}
-
-		o=instance.audio_context.createOscillator();
-		g=instance.audio_context.createGain();
-		o.connect(g);
-		o.type='sine';
-		g.connect(instance.audio_context.destination);
-		o.start(0);
-		g.gain.exponentialRampToValueAtTime(0.00001,instance.audio_context.currentTime+ 1.5);
 	}
 
 	return instance;
