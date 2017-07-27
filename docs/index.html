@@ -3,7 +3,9 @@
         <title>storageUI</title>
         <link rel='shortcut icon' href="favicon.ico?v=1" type='image/x-icon'>         
         <script src='storageui.min.js'></script>
+
         <script>
+        
             var stor = storageUI(
             {
                 items:
@@ -47,7 +49,7 @@
                     },
 
                     {
-                        name: "Save Hisotry",
+                        name: "Save History",
                         ls_name: "saved_v1",
                         on_save: function(item)
                         {
@@ -68,18 +70,21 @@
             });
 
             var s = '{"version":"options_v1","sound":true,"commas":true,"round":true,"round_places":10,"fraction":false,"mixed":false,"theme":"lake"}';
+
             localStorage.setItem('options_v1', s);
 
             s = '{"version":"programs_v1","items":[{"name":"clean","primary":{"title":"clean","commands":"remove all lines","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"test1","primary":{"title":"test 1","commands":"insert 544; add line after; prev variable; insert +234; add line after; prev input; move caret to start; insert (; move caret to end; insert )/3; format all; play done","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F3","primary":{"title":"","commands":"insert this is F3","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F4","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F5","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F6","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F7","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F8","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"formt","primary":{"title":"format","commands":"format all","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"F9","primary":{"title":"","commands":"","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"undo","primary":{"title":"undo","commands":"undo","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}},{"name":"redo","primary":{"title":"redo","commands":"redo","doubleclick":false},"secondary":{"title":"","commands":"","doubleclick":false}}]}';
+
             localStorage.setItem('programs_v1', s);
 
             s = '{"version":"saved_v1","items":[["Wednesday, July 26th, 2017, 6:00:00 AM","http://calculator.merkoba.com/X46ROs4j",1,"4/365/*8(4)\n",false],["Wednesday, July 26th, 2017, 5:59:54 AM","http://calculator.merkoba.com/BLWw17sn",1,"4/365/*84//567\n",false],["Wednesday, July 26th, 2017, 5:59:51 AM","http://calculator.merkoba.com/GYyAggLw",1,"4/365/*5435584//567\n",false],["Wednesday, July 26th, 2017, 5:59:48 AM","http://calculator.merkoba.com/rcca1PsB",1,"4/365/*54355\n",false],["Wednesday, July 26th, 2017, 5:59:46 AM","http://calculator.merkoba.com/Zik92u7h",1,"4/365/*5\n",false],["Wednesday, July 26th, 2017, 5:59:42 AM","http://calculator.merkoba.com/DToEJQnN",1,"4/3\n",false],["Monday, July 24th, 2017, 11:41:57 PM","http://calculator.merkoba.com/Pirwf5lL",1,"5\n",false]]}';
-            localStorage.setItem('saved_v1', s);
 
+            localStorage.setItem('saved_v1', s);
 
         </script>
 
         <style>
+
             body
             {
                 max-width: 80%;
@@ -105,10 +110,13 @@
                 color: #be5959;
                 text-decoration: none;
             }
+
         </style>
+
     </head>
 
     <body>
+
         <br><h1>storageUI</h1>
         
         A single 5kb javascript file that enables a simple viewer and editor for localStorage data.<br><br>
@@ -166,7 +174,7 @@
         },
 
         {
-            name: "Save Hisotry",
+            name: "Save History",
             ls_name: "saved_v1",
             on_save: function(item)
             {
@@ -216,5 +224,6 @@ stor.menu();
 
         <br><br><br><br>
         <br><br><br><br>
+
     </body>
 </html>

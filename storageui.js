@@ -1,4 +1,4 @@
-/*storageUI Version 1.0.4*/
+/*storageUI Version 1.1.0*/
 
 var storageUI = function(params)
 {
@@ -180,7 +180,7 @@ var storageUI = function(params)
 		style1 += "margin-top: 0.2em;";
 		style1 += "margin-bottom: 0.2em;";
 		style1 += "font-size: 0.9em;"	;
-		style1 += "width: 20em;";
+		style1 += "width: 25em;";
 		style1 += "border: 0.05em solid;";
 		style1 += "padding: 0.2em;";
 		style1 += "outline: none;";
@@ -207,6 +207,7 @@ var storageUI = function(params)
 			s += item.name + "<br>";
 			s += "<textarea rows='5' class='storageui-area' style='" + style1 + "' id='storageui-area-" + i + "'></textarea><br>";
 			s += "<span class='storageui-click-item' style='" + style2 + "' id='storageui-copy-" + i + "'>Copy To Clipboard</span>";
+			s += "&nbsp; | &nbsp;<span class='storageui-click-item' style='" + style2 + "' id='storageui-select-" + i + "'>Select All</span>";
 			s += "&nbsp; | &nbsp;<span class='storageui-click-item' style='" + style2 + "' id='storageui-save-" + i + "'>Save Modification</span>";
 			s += "<br><br><br>";
 		}
@@ -226,6 +227,7 @@ var storageUI = function(params)
 
 			var area = document.getElementById('storageui-area-' + i);
 			var clipboard = document.getElementById('storageui-copy-' + i);
+			var select = document.getElementById('storageui-select-' + i);
 			var save = document.getElementById('storageui-save-' + i);
 			var ls = localStorage.getItem(item.ls_name);
 
@@ -240,6 +242,11 @@ var storageUI = function(params)
 			{
 				return function(){save_func(item, area)};
 			}(item, area));
+
+			select.addEventListener("click", function(area)
+			{
+				return function(){select_func(area)};
+			}(area));
 		}
 
 		function copy_func(item, area)
@@ -251,6 +258,11 @@ var storageUI = function(params)
 		function save_func(item, area)
 		{
 			item.on_save({name:item.name, ls_name:item.ls_name, value:area.value});
+		}
+
+		function select_func(area)
+		{
+			area.select();			
 		}	
 	}
 
