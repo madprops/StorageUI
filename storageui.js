@@ -1,4 +1,4 @@
-/*StorageUI Version 2.1.1*/
+/*StorageUI Version 2.1.2*/
 
 var StorageUI = function(params)
 {
@@ -239,7 +239,7 @@ var StorageUI = function(params)
 			s += "<input type='checkbox' class='StorageUI-checkbox' style='width:2em;height:2em" + "' id='StorageUI-checkbox-" + i + "'><br><br><br>";
 		}
 
-		s += "<span class='StorageUI-reset-btn' style='color:#153c50;font-size:1.4em;cursor:pointer' id='StorageUI-reset'>Reset Selected</span>";
+		s += "<span class='StorageUI-reset-btn' style='color:#153c50;font-size:1.4em;cursor:pointer;user-select:none' id='StorageUI-reset'>Reset Selected</span>";
 
 		instance.params.msg.show(s);
 
