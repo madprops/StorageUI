@@ -3,7 +3,7 @@
         <title>StorageUI</title>
         <link rel='shortcut icon' href="favicon.ico?v=1" type='image/x-icon'>         
         <script src='https://madprops.github.io/Msg/msg.min.js'></script>
-        <script src='storageui.min.js'></script>
+        <script src='../storageui.js'></script>
 
         <script>
 
@@ -40,7 +40,7 @@
                         on_reset: function(item)
                         {
                             localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
-                            alert(item.name + ' was resetted!');
+                            alert(item.ls_name + ' was resetted!');
                         },
                         on_copied: function(item)
                         {
@@ -58,7 +58,7 @@
                         on_reset: function(item)
                         {
                             localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
-                            alert(item.name + ' was resetted!');
+                            alert(item.ls_name + ' was resetted!');
                         },
                         on_copied: function(item)
                         {
@@ -66,7 +66,12 @@
                         }
                     }
                 ],
-                msg: Msg()
+                msg: Msg(),
+                after_reset: function(list)
+                {
+                    alert('All reset events were fired. Check the console.');
+                    console.log(list);
+                }
             });
 
             var s = '{"version":"options_v1","sound":true,"commas":true,"round":true,"round_places":10,"fraction":false,"mixed":false,"theme":"lake"}';
@@ -165,7 +170,7 @@
             on_reset: function(item)
             {
                 localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
-                alert(item.name + ' was resetted!');
+                alert(item.ls_name + ' was resetted!');
             },
             on_copied: function(item)
             {
@@ -183,7 +188,7 @@
             on_reset: function(item)
             {
                 localStorage.setItem(item.ls_name, JSON.stringify({version:item.ls_name}));
-                alert(item.name + ' was resetted!');
+                alert(item.ls_name + ' was resetted!');
             },
             on_copied: function(item)
             {
@@ -191,7 +196,13 @@
             }
         }
     ],
-    msg: Msg()
+    msg: Msg(),
+    after_reset: function(list)
+    {
+        alert('All reset events were fired. Check the console.');
+        console.log(list);
+    }
+}
 });
 
 stor.menu();
@@ -203,10 +214,10 @@ stor.menu();
         Each object has a list of items. Each item has the following properties:<br><br>
         <i>name (string)</i>: The displayed name of the localStorage object.<br><br>
         <i>ls_name (string)</i>: The internal name of the localStorage object to be retreived.<br><br>
-        <i>on_save (function) [default: empty function]</i>: What to do when "Save Modification" was clicked. It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
-        <i>on_reset (function) [default: empty function]</i>: What to do when the object was selected to be resetted. It receives an item, with "name" and "ls_name".<br><br>
-        <i>on_copied (function) [default: empty function]</i>: This triggers after a textarea's value was copied to the clipboard by clicking "Copy To Clipboard". It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
-        <i>on_selected (function) [default: empty function]</i>: This triggers after a textarea's text was selected by clicking "Select All". It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
+        <i>on_save (function) [default: Empty Function]</i>: What to do when "Save Modification" was clicked. It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
+        <i>on_reset (function) [default: Empty Function]</i>: What to do when the object was selected to be resetted. It receives an item, with "name" and "ls_name".<br><br>
+        <i>on_copied (function) [default: Empty Function]</i>: This triggers after a textarea's value was copied to the clipboard by clicking "Copy To Clipboard". It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
+        <i>on_selected (function) [default: Empty Function]</i>: This triggers after a textarea's text was selected by clicking "Select All". It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
         <i>show_in_view (boolean) [default: true]</i>: Controls whether the item is shown in the View Data window.<br><br>
         <i>show_in_reset (boolean) [default: true]</i>: Controls whether the item is shown in the Reset Data window.<br><br>
 
@@ -214,6 +225,7 @@ stor.menu();
         <i>msg (Msg instance)</i>: The <a target='_blank' href='https://madprops.github.io/Msg/'>Msg</a> instance to use, this is required.<br><br>
         <i>view_in_menu (boolean) [default: true]</i>: Controls whether "View Data" is shown in the menu window.<br><br>
         <i>reset_in_menu (boolean) [default: true]</i>: Controls whether "Reset Data" is shown in the menu window.<br><br>
+        <i>after_reset (function) [default: Empty Function]</i>: Event that triggers after all the on_reset events are fired. It fires even if no item was resetted. It returns a list with pairs of item objects containing "name" and "ls_name" with every item that was resetted.<br><br>
 
         <br><h2>Methods</h2>
         <i>instance.menu()</i>: Shows the menu to select either View Data or Reset Data.<br><br>

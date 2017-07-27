@@ -1,4 +1,4 @@
-/*StorageUI Version 2.0.0*/
+/*StorageUI Version 2.1.0*/
 
 var StorageUI = function(params)
 {
@@ -23,6 +23,11 @@ var StorageUI = function(params)
 		if(instance.params.reset_in_menu === undefined)
 		{
 			instance.params.reset_in_menu = true;
+		}
+
+		if(instance.params.after_reset === undefined)
+		{
+			instance.params.after_reset = function(){};
 		}
 
 		for(var i=0; i<instance.params.items.length; i++)
@@ -233,7 +238,9 @@ var StorageUI = function(params)
 		var reset = document.getElementById('StorageUI-reset');
 
 		reset.addEventListener("click", function()
-		{	
+		{
+			var resetted_items = [];
+
 			for(var i=0; i<instance.params.items.length; i++)
 			{
 				var item = instance.params.items[i];
@@ -246,8 +253,11 @@ var StorageUI = function(params)
 				if(document.getElementById("StorageUI-checkbox-" + i).checked)
 				{
 					item.on_reset({name:item.name, ls_name:item.ls_name});
+					resetted_items.push({name:item.name, ls_name:item.ls_name});
 				}
 			}
+
+			instance.params.after_reset(resetted_items);
 
 			instance.params.msg.close();
 		});
