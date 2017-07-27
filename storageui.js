@@ -1,4 +1,4 @@
-/*storageUI Version 1.2.0*/
+/*storageUI Version 1.3.0*/
 
 var storageUI = function(params)
 {
@@ -76,20 +76,28 @@ var storageUI = function(params)
 
 	instance.msg = function(html)
 	{
-		var msg = document.getElementById('storageui-msg');
-
-		if(msg === null)
+		if(instance.params.msg === undefined)
 		{
-			instance.create();
-			msg = document.getElementById('storageui-msg');
+			var msg = document.getElementById('storageui-msg');
+
+			if(msg === null)
+			{
+				instance.create();
+				msg = document.getElementById('storageui-msg');
+			}
+
+			var overlay = document.getElementById('storageui-overlay');
+
+			msg.innerHTML = html;
+			msg.style.display = 'block';
+			overlay.style.display = 'block';
+			msg.focus();
 		}
 
-		var overlay = document.getElementById('storageui-overlay');
-
-		msg.innerHTML = html;
-		msg.style.display = 'block';
-		overlay.style.display = 'block';
-		msg.focus();
+		else
+		{
+			instance.params.msg.show(html);
+		}
 	}
 
 	instance.create = function()

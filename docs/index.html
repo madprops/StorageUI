@@ -3,6 +3,7 @@
         <title>storageUI</title>
         <link rel='shortcut icon' href="favicon.ico?v=1" type='image/x-icon'>         
         <script src='storageui.min.js'></script>
+        <script src='msg.min.js'></script>
 
         <script>
 
@@ -213,6 +214,7 @@ stor.menu();
         <h2>General Options</h2>
         <i>view_in_menu (boolean) [default: true]</i>: Controls whether "View Data" is shown in the menu window.<br><br>
         <i>reset_in_menu (boolean) [default: true]</i>: Controls whether "Reset Data" is shown in the menu window.<br><br>
+        <i>msg (msgjs instance)</i>: If this is defined as a msgjs instance, it will use that instead of the internal message system.<br><br>
 
         <br><h2>Methods</h2>
         <i>instance.menu()</i>: Shows the menu to select either View Data or Reset Data.<br><br>
