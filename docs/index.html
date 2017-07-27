@@ -1,12 +1,13 @@
 <html>
     <head>
-        <title>storageUI</title>
+        <title>StorageUI</title>
         <link rel='shortcut icon' href="favicon.ico?v=1" type='image/x-icon'>         
+        <script src='https://madprops.github.io/Msg/msg.min.js'></script>
         <script src='storageui.min.js'></script>
 
         <script>
 
-            var stor = storageUI(
+            var stor = StorageUI(
             {
                 items:
                 [
@@ -28,7 +29,6 @@
                             alert(item.name + ' was copied!');
                         }
                     },
-
                     {
                         name: "Programs",
                         ls_name: "programs_v1",
@@ -47,7 +47,6 @@
                             alert(item.name + ' was copied!');
                         }
                     },
-
                     {
                         name: "Save History",
                         ls_name: "saved_v1",
@@ -66,7 +65,8 @@
                             alert(item.name + ' was copied!');
                         }
                     }
-                ]
+                ],
+                msg: Msg()
             });
 
             var s = '{"version":"options_v1","sound":true,"commas":true,"round":true,"round_places":10,"fraction":false,"mixed":false,"theme":"lake"}';
@@ -117,13 +117,14 @@
 
     <body>
 
-        <br><h1>storageUI</h1>
+        <br><h1>StorageUI</h1>
         
-        A single 5kb javascript file that enables a simple viewer and editor for localStorage data.<br><br>
+        A plugin for <a target='_blank' href='https://madprops.github.io/Msg/'>Msg</a> that enables a simple viewer and editor for localStorage data.<br><br>
         It makes it easy to give your site a quick way to copy local storage from one browser to another.<br><br>
         It doesn't modify localStorage, that's up to you via triggered events.<br>
         <br><br>
-        To install just include the file:<br>
+        To install, include these files:<br>
+        <i><blockquote><pre><code>&lt;script src='msg.min.js'&gt;&lt;/script&gt;</code></pre></blockquote></i>
         <i><blockquote><pre><code>&lt;script src='storageui.min.js'&gt;&lt;/script&gt;</code></pre></blockquote></i>
 
         <br><span class='clicky' onclick='stor.menu()'>Click here for a Demo</span>
@@ -131,7 +132,7 @@
 
         Demo Code:
 
-        <i><blockquote><pre><code>var stor = storageUI(
+        <i><blockquote><pre><code>var stor = StorageUI(
 {
     items:
     [
@@ -153,7 +154,6 @@
                 alert(item.name + ' was copied!');
             }
         },
-
         {
             name: "Programs",
             ls_name: "programs_v1",
@@ -172,7 +172,6 @@
                 alert(item.name + ' was copied!');
             }
         },
-
         {
             name: "Save History",
             ls_name: "saved_v1",
@@ -191,7 +190,8 @@
                 alert(item.name + ' was copied!');
             }
         }
-    ]
+    ],
+    msg: Msg()
 });
 
 stor.menu();
@@ -199,7 +199,7 @@ stor.menu();
 
         <h2>Item Options</h2>
 
-        To create an instance you pass it an object as you can see in the example above.<br>
+        To create an instance you pass it an object as you can see in the example above.<br><br>
         Each object has a list of items. Each item has the following properties:<br><br>
         <i>name (string)</i>: The displayed name of the localStorage object.<br><br>
         <i>ls_name (string)</i>: The internal name of the localStorage object to be retreived.<br><br>
@@ -211,18 +211,18 @@ stor.menu();
         <i>show_in_reset (boolean) [default: true]</i>: Controls whether the item is shown in the Reset Data window.<br><br>
 
         <h2>General Options</h2>
+        <i>msg (Msg instance)</i>: The <a target='_blank' href='https://madprops.github.io/Msg/'>Msg</a> instance to use, this is required.<br><br>
         <i>view_in_menu (boolean) [default: true]</i>: Controls whether "View Data" is shown in the menu window.<br><br>
         <i>reset_in_menu (boolean) [default: true]</i>: Controls whether "Reset Data" is shown in the menu window.<br><br>
-        <i>msg (msgjs instance)</i>: If this is defined as a msgjs instance, it will use that instead of the internal message system.<br><br>
 
         <br><h2>Methods</h2>
         <i>instance.menu()</i>: Shows the menu to select either View Data or Reset Data.<br><br>
         <i>instance.view()</i>: Shows the View Data window.<br><br>
         <i>instance.reset()</i>: Shows the Reset Data window.<br><br>
-        <i>instance.close()</i>: Closes everything.<br><br>
-        <i>instance.is_open()</i>: Returns true if any instance is currently open. If not, it returns false.<br><br>
 
-        <br><br><a href='https://github.com/madprops/storageUI'>Get the code at Github</a>
+        To control the popup, refer to the <a target='_blank' href='https://madprops.github.io/Msg/'>Msg</a> documentation.<br>
+
+        <br><br><a href='https://github.com/madprops/StorageUI'>Get the code at Github</a>
 
         <br><br><br><br>
         <br><br><br><br>

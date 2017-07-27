@@ -1,6 +1,6 @@
-/*storageUI Version 1.3.1*/
+/*StorageUI Version 2.0.0*/
 
-var storageUI = function(params)
+var StorageUI = function(params)
 {
 	var instance = {};
 
@@ -10,6 +10,11 @@ var storageUI = function(params)
 
 	function check_params()
 	{
+		if(instance.params.msg === undefined)
+		{
+			throw "No Msg instance was passed.";
+		}
+
 		if(instance.params.view_in_menu === undefined)
 		{
 			instance.params.view_in_menu = true;
@@ -66,95 +71,6 @@ var storageUI = function(params)
 		}
 	}
 
-	instance.close = function()
-	{
-		if(instance.params.msg === undefined)
-		{
-			var overlay = document.getElementById('storageui-overlay');
-			var msg = document.getElementById('storageui-msg');
-			msg.style.display = 'none';
-			overlay.style.display = 'none';
-		}
-
-		else
-		{
-			instance.params.msg.close();
-		}
-	}
-
-	instance.msg = function(html)
-	{
-		if(instance.params.msg === undefined)
-		{
-			var msg = document.getElementById('storageui-msg');
-
-			if(msg === null)
-			{
-				instance.create();
-				msg = document.getElementById('storageui-msg');
-			}
-
-			var overlay = document.getElementById('storageui-overlay');
-
-			msg.innerHTML = html;
-			msg.style.display = 'block';
-			overlay.style.display = 'block';
-			msg.focus();
-		}
-
-		else
-		{
-			instance.params.msg.show(html);
-		}
-	}
-
-	instance.create = function()
-	{
-		var style1 = "";
-
-		style1 += "color: black;";
-		style1 += "font-size: 23.8px;";
-		style1 += "font-family: sans-serif;";
-		style1 += "text-align: center;";
-		style1 += "position: fixed;";
-		style1 += "left: 50%;";
-		style1 += "top: 50%;";
-		style1 += "transform: translate(-50%, -50%);";
-		style1 += "background: white;";
-		style1 += "padding: 1.6em;";
-		style1 += "overflow: auto;";
-		style1 += "max-height: 80vh;";
-		style1 += "overflow-x: hidden;";
-		style1 += "overflow-y: auto;";
-		style1 += "display: block;";
-		style1 += "z-index: 499399259;";
-		style1 += "outline: 0";
-
-		var style2 = "";
-
-		style2 += "height: 100%;";
-		style2 += "width: 100%;";
-		style2 += "top: 0;";
-		style2 += "left: 0;";
-		style2 += "position: fixed;";
-		style2 += "z-index: 49939959;";
-		style2 += "background-color: rgba(0, 0, 0, 0.7);";
-		style2 += "display: block";
-
-		var overlay_html = "<div style='" + style2 + "' id='storageui-overlay'></div>";
-		var msg_html = "<div style='" + style1 + "' id='storageui-msg'></div>";
-
-		document.body.insertAdjacentHTML('beforeend', overlay_html);
-		document.body.insertAdjacentHTML('beforeend', msg_html);
-
-		var overlay = document.getElementById('storageui-overlay');
-
-		overlay.addEventListener("click", function()
-		{
-			instance.close();
-		});		
-	}
-
 	instance.menu = function()
 	{
 		if(!params.view_in_menu && !params.reset_in_menu)
@@ -166,21 +82,21 @@ var storageUI = function(params)
 
 		if(instance.params.view_in_menu)
 		{
-			s += "<span class='storageui-menu-item' style='color:#153c50;font-size:1.4em;cursor:pointer'id='storageui-get-data'>View Data</span><br><br><br>";
+			s += "<span class='StorageUI-menu-item' style='color:#153c50;font-size:1.4em;cursor:pointer'id='StorageUI-get-data'>View Data</span><br><br><br>";
 		}
 
 		if(instance.params.reset_in_menu)
 		{
-			s += "<span class='storageui-menu-item' style='color:#153c50;font-size:1.4em;cursor:pointer'id='storageui-reset-data'>Reset Data</span><br><br><br>";
+			s += "<span class='StorageUI-menu-item' style='color:#153c50;font-size:1.4em;cursor:pointer'id='StorageUI-reset-data'>Reset Data</span><br><br><br>";
 		}
 
 		s = s.replace(/[<br>]+$/g, '');
 
-		instance.msg(s);
+		instance.params.msg.show(s);
 
 		if(instance.params.view_in_menu)
 		{
-			var get_data = document.getElementById('storageui-get-data');
+			var get_data = document.getElementById('StorageUI-get-data');
 
 			get_data.addEventListener("click", function()
 			{
@@ -190,7 +106,7 @@ var storageUI = function(params)
 
 		if(instance.params.reset_in_menu)
 		{
-			var reset_data = document.getElementById('storageui-reset-data');
+			var reset_data = document.getElementById('StorageUI-reset-data');
 
 			reset_data.addEventListener("click", function()
 			{
@@ -231,16 +147,16 @@ var storageUI = function(params)
 			}
 
 			s += item.name + "<br>";
-			s += "<textarea rows='5' class='storageui-area' style='" + style1 + "' id='storageui-area-" + i + "'></textarea><br>";
-			s += "<span class='storageui-click-item' style='" + style2 + "' id='storageui-copy-" + i + "'>Copy To Clipboard</span>";
-			s += "&nbsp; | &nbsp;<span class='storageui-click-item' style='" + style2 + "' id='storageui-select-" + i + "'>Select All</span>";
-			s += "&nbsp; | &nbsp;<span class='storageui-click-item' style='" + style2 + "' id='storageui-save-" + i + "'>Save Modification</span>";
+			s += "<textarea rows='5' class='StorageUI-area' style='" + style1 + "' id='StorageUI-area-" + i + "'></textarea><br>";
+			s += "<span class='StorageUI-click-item' style='" + style2 + "' id='StorageUI-copy-" + i + "'>Copy To Clipboard</span>";
+			s += "&nbsp; | &nbsp;<span class='StorageUI-click-item' style='" + style2 + "' id='StorageUI-select-" + i + "'>Select All</span>";
+			s += "&nbsp; | &nbsp;<span class='StorageUI-click-item' style='" + style2 + "' id='StorageUI-save-" + i + "'>Save Modification</span>";
 			s += "<br><br><br>";
 		}
 
 		s = s.replace(/[<br>]+$/g, '');
 
-		instance.msg(s);
+		instance.params.msg.show(s);
 
 		for(var i=0; i<instance.params.items.length; i++)
 		{
@@ -251,10 +167,10 @@ var storageUI = function(params)
 				continue;
 			}
 
-			var area = document.getElementById('storageui-area-' + i);
-			var clipboard = document.getElementById('storageui-copy-' + i);
-			var select = document.getElementById('storageui-select-' + i);
-			var save = document.getElementById('storageui-save-' + i);
+			var area = document.getElementById('StorageUI-area-' + i);
+			var clipboard = document.getElementById('StorageUI-copy-' + i);
+			var select = document.getElementById('StorageUI-select-' + i);
+			var save = document.getElementById('StorageUI-save-' + i);
 			var ls = localStorage.getItem(item.ls_name);
 
 			area.value = ls;
@@ -307,14 +223,14 @@ var storageUI = function(params)
 			}
 
 			s += item.name + "<br><br>";
-			s += "<input type='checkbox' class='storageui-checkbox' style='width:2em;height:2em" + "' id='storageui-checkbox-" + i + "'><br><br><br>";
+			s += "<input type='checkbox' class='StorageUI-checkbox' style='width:2em;height:2em" + "' id='StorageUI-checkbox-" + i + "'><br><br><br>";
 		}
 
-		s += "<span class='storageui-reset-btn' style='color:#153c50;font-size:1.4em;cursor:pointer' id='storageui-reset'>Reset Selected</span>";
+		s += "<span class='StorageUI-reset-btn' style='color:#153c50;font-size:1.4em;cursor:pointer' id='StorageUI-reset'>Reset Selected</span>";
 
-		instance.msg(s);
+		instance.params.msg.show(s);
 
-		var reset = document.getElementById('storageui-reset');
+		var reset = document.getElementById('StorageUI-reset');
 
 		reset.addEventListener("click", function()
 		{	
@@ -327,13 +243,13 @@ var storageUI = function(params)
 					continue;
 				}
 
-				if(document.getElementById("storageui-checkbox-" + i).checked)
+				if(document.getElementById("StorageUI-checkbox-" + i).checked)
 				{
 					item.on_reset({name:item.name, ls_name:item.ls_name});
 				}
 			}
 
-			instance.close();
+			instance.params.msg.close();
 		});
 	}	
 
@@ -345,29 +261,6 @@ var storageUI = function(params)
 		textareaEl.select();
 		document.execCommand('copy');
 		document.body.removeChild(textareaEl);		
-	}
-
-	instance.is_open = function()
-	{
-		if(instance.params.msg === undefined)
-		{
-			var msg = document.getElementById('storageui-msg');
-
-			if(msg === null || msg.style.display === 'none')
-			{
-				return false;
-			}
-
-			else
-			{
-				return true;
-			}
-		}
-
-		else
-		{
-			instance.params.msg.is_open();
-		}
 	}
 
 	return instance;
