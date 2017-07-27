@@ -1,1 +1,1 @@
-[Demo and Documentation](https://madprops.github.io/storageUI/)
+[Demo and Documentation](https://madprops.github.io/StorageUI/)
