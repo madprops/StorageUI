@@ -194,9 +194,9 @@ var storageUI = function(params)
 
 		var style2 = "";
 
-		style2 += "padding-top: 0.1em;"
-		style2 += "font-size: 0.9em;"
-		style2 += "cursor: pointer"
+		style2 += "padding-top: 0.1em;";
+		style2 += "font-size: 0.9em;";
+		style2 += "cursor: pointer";
 
 		var s = "";
 
@@ -268,7 +268,7 @@ var storageUI = function(params)
 		function select_func(item, area)
 		{
 			area.select();
-			item.on_selected({name:item.name, ls_name:item.ls_name, value:area.value})			
+			item.on_selected({name:item.name, ls_name:item.ls_name, value:area.value});			
 		}	
 	}
 
