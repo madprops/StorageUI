@@ -1,4 +1,4 @@
-/*StorageUI Version 2.1.0*/
+/*StorageUI Version 2.1.1*/
 
 var StorageUI = function(params)
 {
@@ -85,14 +85,21 @@ var StorageUI = function(params)
 
 		var s = "";
 
+		var style = "";
+
+		style += "color:#153c50;";
+		style += "font-size:1.4em;";
+		style += "cursor:pointer;";
+		style += "user-select:none";
+
 		if(instance.params.view_in_menu)
 		{
-			s += "<span class='StorageUI-menu-item' style='color:#153c50;font-size:1.4em;cursor:pointer'id='StorageUI-get-data'>View Data</span><br><br><br>";
+			s += "<span class='StorageUI-menu-item' style='" + style + "'id='StorageUI-get-data'>View Data</span><br><br><br>";
 		}
 
 		if(instance.params.reset_in_menu)
 		{
-			s += "<span class='StorageUI-menu-item' style='color:#153c50;font-size:1.4em;cursor:pointer'id='StorageUI-reset-data'>Reset Data</span><br><br><br>";
+			s += "<span class='StorageUI-menu-item' style='" + style + "'id='StorageUI-reset-data'>Reset Data</span><br><br><br>";
 		}
 
 		s = s.replace(/[<br>]+$/g, '');
@@ -138,7 +145,8 @@ var StorageUI = function(params)
 
 		style2 += "padding-top: 0.1em;";
 		style2 += "font-size: 0.9em;";
-		style2 += "cursor: pointer";
+		style2 += "cursor: pointer;";
+		style2 += "user-select: none";
 
 		var s = "";
 
