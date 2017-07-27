@@ -1,4 +1,4 @@
-/*storageUI Version 1.1.1*/
+/*storageUI Version 1.2.0*/
 
 var storageUI = function(params)
 {
@@ -70,68 +70,73 @@ var storageUI = function(params)
 	{
 		var overlay = document.getElementById('storageui-overlay');
 		var msg = document.getElementById('storageui-msg');
-		overlay.parentNode.removeChild(overlay);
-		msg.parentNode.removeChild(msg);
+		msg.style.display = 'none';
+		overlay.style.display = 'none';
 	}
 
-	instance.msg = function(txt)
+	instance.msg = function(html)
 	{
 		var msg = document.getElementById('storageui-msg');
 
 		if(msg === null)
 		{
-			var style1 = "";
-
-			style1 += "color: black;";
-			style1 += "font-size: 23.8px;";
-			style1 += "font-family: sans-serif;";
-			style1 += "text-align: center;";
-			style1 += "position: fixed;";
-			style1 += "left: 50%;";
-			style1 += "top: 50%;";
-			style1 += "transform: translate(-50%, -50%);";
-			style1 += "background: white;";
-			style1 += "padding: 1.6em;";
-			style1 += "overflow: auto;";
-			style1 += "max-height: 80vh;";
-			style1 += "overflow-x: hidden;";
-			style1 += "overflow-y: auto;";
-			style1 += "display: block;";
-			style1 += "z-index: 499399259;";
-			style1 += "outline: 0";
-
-			var style2 = "";
-
-			style2 += "height: 100%;";
-			style2 += "width: 100%;";
-			style2 += "top: 0;";
-			style2 += "left: 0;";
-			style2 += "position: fixed;";
-			style2 += "z-index: 49939959;";
-			style2 += "background-color: rgba(0, 0, 0, 0.7);";
-			style2 += "display: block";
-
-			var overlay_html = "<div style='" + style2 + "' id='storageui-overlay'></div>";
-			var msg_html = "<div style='" + style1 + "' id='storageui-msg'>" + txt + "</div>";
-
-			document.body.insertAdjacentHTML('beforeend', overlay_html);
-			document.body.insertAdjacentHTML('beforeend', msg_html);
-
-			var msg = document.getElementById('storageui-msg');
-			var overlay = document.getElementById('storageui-overlay');
-
-			msg.focus();
-
-			overlay.addEventListener("click", function()
-			{
-				instance.close();
-			});
+			instance.create();
+			msg = document.getElementById('storageui-msg');
 		}
 
-		else
+		var overlay = document.getElementById('storageui-overlay');
+
+		msg.innerHTML = html;
+		msg.style.display = 'block';
+		overlay.style.display = 'block';
+		msg.focus();
+	}
+
+	instance.create = function()
+	{
+		var style1 = "";
+
+		style1 += "color: black;";
+		style1 += "font-size: 23.8px;";
+		style1 += "font-family: sans-serif;";
+		style1 += "text-align: center;";
+		style1 += "position: fixed;";
+		style1 += "left: 50%;";
+		style1 += "top: 50%;";
+		style1 += "transform: translate(-50%, -50%);";
+		style1 += "background: white;";
+		style1 += "padding: 1.6em;";
+		style1 += "overflow: auto;";
+		style1 += "max-height: 80vh;";
+		style1 += "overflow-x: hidden;";
+		style1 += "overflow-y: auto;";
+		style1 += "display: block;";
+		style1 += "z-index: 499399259;";
+		style1 += "outline: 0";
+
+		var style2 = "";
+
+		style2 += "height: 100%;";
+		style2 += "width: 100%;";
+		style2 += "top: 0;";
+		style2 += "left: 0;";
+		style2 += "position: fixed;";
+		style2 += "z-index: 49939959;";
+		style2 += "background-color: rgba(0, 0, 0, 0.7);";
+		style2 += "display: block";
+
+		var overlay_html = "<div style='" + style2 + "' id='storageui-overlay'></div>";
+		var msg_html = "<div style='" + style1 + "' id='storageui-msg'></div>";
+
+		document.body.insertAdjacentHTML('beforeend', overlay_html);
+		document.body.insertAdjacentHTML('beforeend', msg_html);
+
+		var overlay = document.getElementById('storageui-overlay');
+
+		overlay.addEventListener("click", function()
 		{
-			msg.innerHTML = txt;
-		}
+			instance.close();
+		});		
 	}
 
 	instance.menu = function()
@@ -330,7 +335,7 @@ var storageUI = function(params)
 	{
 		var msg = document.getElementById('storageui-msg');
 
-		if(msg === null)
+		if(msg === null || msg.style.display === 'none')
 		{
 			return false;
 		}
