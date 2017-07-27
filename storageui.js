@@ -1,4 +1,4 @@
-/*storageUI Version 1.0.3*/
+/*storageUI Version 1.0.4*/
 
 var storageUI = function(params)
 {
@@ -306,6 +306,21 @@ var storageUI = function(params)
 		textareaEl.select();
 		document.execCommand('copy');
 		document.body.removeChild(textareaEl);		
+	}
+
+	instance.is_open = function()
+	{
+		var msg = document.getElementById('storageui-msg');
+
+		if(msg === null)
+		{
+			return false;
+		}
+
+		else
+		{
+			return true;
+		}
 	}
 
 	return instance;
