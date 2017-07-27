@@ -5,7 +5,7 @@
         <script src='storageui.min.js'></script>
 
         <script>
-        
+
             var stor = storageUI(
             {
                 items:
@@ -206,6 +206,7 @@ stor.menu();
         <i>on_save (function) [default: empty function]</i>: What to do when "Save Modification" was clicked. It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
         <i>on_reset (function) [default: empty function]</i>: What to do when the object was selected to be resetted. It receives an item, with "name" and "ls_name".<br><br>
         <i>on_copied (function) [default: empty function]</i>: This triggers after a textarea's value was copied to the clipboard by clicking "Copy To Clipboard". It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
+        <i>on_selected (function) [default: empty function]</i>: This triggers after a textarea's text was selected by clicking "Select All". It receives an item, with "name", "ls_name" and "value" (value of the textarea).<br><br>
         <i>show_in_view (boolean) [default: true]</i>: Controls whether the item is shown in the View Data window.<br><br>
         <i>show_in_reset (boolean) [default: true]</i>: Controls whether the item is shown in the Reset Data window.<br><br>
 

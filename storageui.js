@@ -1,4 +1,4 @@
-/*storageUI Version 1.1.0*/
+/*storageUI Version 1.1.1*/
 
 var storageUI = function(params)
 {
@@ -47,6 +47,11 @@ var storageUI = function(params)
 			if(item.on_copied === undefined)
 			{
 				item.on_copied = function(){};
+			}
+
+			if(item.on_selected === undefined)
+			{
+				item.on_selected = function(){};
 			}
 
 			if(item.name === undefined)
@@ -243,10 +248,10 @@ var storageUI = function(params)
 				return function(){save_func(item, area)};
 			}(item, area));
 
-			select.addEventListener("click", function(area)
+			select.addEventListener("click", function(item, area)
 			{
-				return function(){select_func(area)};
-			}(area));
+				return function(){select_func(item, area)};
+			}(item, area));
 		}
 
 		function copy_func(item, area)
@@ -260,9 +265,10 @@ var storageUI = function(params)
 			item.on_save({name:item.name, ls_name:item.ls_name, value:area.value});
 		}
 
-		function select_func(area)
+		function select_func(item, area)
 		{
-			area.select();			
+			area.select();
+			item.on_selected({name:item.name, ls_name:item.ls_name, value:area.value})			
 		}	
 	}
 
