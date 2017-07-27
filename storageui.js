@@ -1,4 +1,4 @@
-/*storageUI Version 1.3.0*/
+/*storageUI Version 1.3.1*/
 
 var storageUI = function(params)
 {
@@ -68,10 +68,18 @@ var storageUI = function(params)
 
 	instance.close = function()
 	{
-		var overlay = document.getElementById('storageui-overlay');
-		var msg = document.getElementById('storageui-msg');
-		msg.style.display = 'none';
-		overlay.style.display = 'none';
+		if(instance.params.msg === undefined)
+		{
+			var overlay = document.getElementById('storageui-overlay');
+			var msg = document.getElementById('storageui-msg');
+			msg.style.display = 'none';
+			overlay.style.display = 'none';
+		}
+
+		else
+		{
+			instance.params.msg.close();
+		}
 	}
 
 	instance.msg = function(html)
@@ -341,16 +349,24 @@ var storageUI = function(params)
 
 	instance.is_open = function()
 	{
-		var msg = document.getElementById('storageui-msg');
-
-		if(msg === null || msg.style.display === 'none')
+		if(instance.params.msg === undefined)
 		{
-			return false;
+			var msg = document.getElementById('storageui-msg');
+
+			if(msg === null || msg.style.display === 'none')
+			{
+				return false;
+			}
+
+			else
+			{
+				return true;
+			}
 		}
 
 		else
 		{
-			return true;
+			instance.params.msg.is_open();
 		}
 	}
 
