@@ -1,4 +1,4 @@
-/*StorageUI Version 2.1.2*/
+/* StorageUI v2.1.2 https://github.com/madprops/StorageUI */
 
 var StorageUI = function(params)
 {
