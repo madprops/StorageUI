@@ -1,4 +1,4 @@
-/* StorageUI v2.1.4 https://github.com/madprops/StorageUI */
+/* StorageUI v2.1.5 https://github.com/madprops/StorageUI */
 
 var StorageUI = function(params)
 {
@@ -103,7 +103,7 @@ var StorageUI = function(params)
 
 		s = s.replace(/[<br>]+$/g, '');
 
-		instance.params.msg.show(s);
+		instance.params.msg.set_or_show(s);
 
 		if(instance.params.view_in_menu)
 		{
@@ -111,7 +111,7 @@ var StorageUI = function(params)
 
 			get_data.addEventListener("click", function()
 			{
-				instance.view(false);
+				instance.view();
 			});
 		}
 
@@ -121,12 +121,12 @@ var StorageUI = function(params)
 
 			reset_data.addEventListener("click", function()
 			{
-				instance.reset(false);
+				instance.reset();
 			});
 		}
 	}
 
-	instance.view = function(show=true)
+	instance.view = function()
 	{
 		var style1 = "";
 
@@ -168,15 +168,7 @@ var StorageUI = function(params)
 
 		s = s.replace(/[<br>]+$/g, '');
 
-		if(show)
-		{
-			instance.params.msg.show(s);
-		}
-
-		else
-		{
-			instance.params.msg.set(s);
-		}
+		instance.params.msg.set_or_show(s);
 
 		for(var i=0; i<instance.params.items.length; i++)
 		{
@@ -229,7 +221,7 @@ var StorageUI = function(params)
 		}	
 	}
 
-	instance.reset = function(show=true)
+	instance.reset = function()
 	{
 		var s = "";
 
@@ -248,15 +240,7 @@ var StorageUI = function(params)
 
 		s += "<span class='StorageUI-reset-btn' style='font-size:1.4em;cursor:pointer;user-select:none' id='StorageUI-reset'>Reset Selected</span>";
 
-		if(show)
-		{
-			instance.params.msg.show(s);
-		}
-
-		else
-		{
-			instance.params.msg.set(s);
-		}
+		instance.params.msg.set_or_show(s);
 
 		var reset = document.getElementById('StorageUI-reset');
 
