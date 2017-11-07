@@ -132,7 +132,7 @@ var StorageUI = function(params)
 
 		style1 += "margin-top: 0.2em;";
 		style1 += "margin-bottom: 0.2em;";
-		style1 += "font-size: 0.9em;"	;
+		style1 += "font-size: 1em;";
 		style1 += "width: 25em;";
 		style1 += "border: 0.05em solid;";
 		style1 += "padding: 0.2em;";
@@ -143,7 +143,7 @@ var StorageUI = function(params)
 		var style2 = "";
 
 		style2 += "padding-top: 0.1em;";
-		style2 += "font-size: 0.9em;";
+		style2 += "font-size: 1em;";
 		style2 += "cursor: pointer;";
 		style2 += "user-select: none";
 
