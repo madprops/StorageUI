@@ -73,7 +73,7 @@
                         }
                     }
                 ],
-                msg: Msg({class:"blue"}),
+                msg: Msg.factory({class:"blue"}),
                 after_reset: function(list)
                 {
                     alert('All reset events were fired. Check the console.');
@@ -211,7 +211,7 @@
             }
         }
     ],
-    msg: Msg({class:"blue"}),
+    msg: Msg.factory({class:"blue"}),
     after_reset: function(list)
     {
         alert('All reset events were fired. Check the console.');
